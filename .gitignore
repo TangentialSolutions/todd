@@ -87,3 +87,7 @@ yarn-debug.log*
 
 # RubyMine
 .idea
+
+# MacOSX
+.DS_STORE
+public/.DS_STORE
