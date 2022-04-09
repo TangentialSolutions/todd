@@ -1,6 +1,6 @@
 .letter-collection {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fit, 500px);
+    grid-auto-rows: 500px;
     row-gap: 30px;
 }
