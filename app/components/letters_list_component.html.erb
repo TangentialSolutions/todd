@@ -1,0 +1,10 @@
+<div class="letters-list">
+  <h3>Available letters:</h3>
+  <ul class="letters-list_items">
+    <% @letters.each do |letter| %>
+    <li>
+      <a href="<%= letter.linkpath %>"><%= letter.filename %></a>
+    </li>
+    <% end %>
+  </ul>
+</div>

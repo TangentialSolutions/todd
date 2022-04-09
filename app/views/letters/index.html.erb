@@ -1,1 +1,4 @@
-<%= render SearchFormComponent.new %>
+<div class="letter-index">
+  <%= render SearchFormComponent.new %>
+  <%= render LettersListComponent.new(letters: Letter.all) %>
+</div>
