@@ -1,0 +1,7 @@
+<div class="letter">
+  <h1><%= @letter.filename %></h1>
+  <a href="<%= @letter.linkpath %>">View <%= @letter.filename %></a>
+  <div class="letter_content">
+    <%= raw @letter.html %>
+  </div>
+</div>

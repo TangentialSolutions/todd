@@ -31,7 +31,7 @@ module Seeds
 
         pdf = Yomu.new filepath
 
-        puts "Created #{file}!" if Letter.create!(filename: file, text: pdf.text)
+        puts "Created #{file}!" if Letter.create!(filename: file, text: pdf.text, html: pdf.html)
       end
     end
   end

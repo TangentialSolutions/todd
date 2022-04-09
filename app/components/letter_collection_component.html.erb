@@ -1,0 +1,5 @@
+<div class="letter-collection">
+  <% @letters.each do |letter| %>
+    <%= render LetterComponent.new letter: letter %>
+  <% end %>
+</div>
