@@ -72,3 +72,10 @@ group :test do
 end
 
 gem "pg", "~> 1.3"
+
+gem "rqrcode", "~> 2.1"
+
+
+gem "byebug", "~> 11.1"
+
+gem "yomu", "~> 0.2.4"
