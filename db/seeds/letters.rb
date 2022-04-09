@@ -19,16 +19,19 @@ module Seeds
     ]
 
     def self.seed
+      Letter.destroy_all if ENV["FORCE_RESEED"].present?
+      puts "Destroyed all letters" if ENV["FORCE_RESEED"].present?
+
       LETTER_FILES.each do |file|
-        file_path = Rails.root.join(BASE_PATH, file)
-        unless File.exists?(file_path)
-          puts "Unable to find #{file_path}"
+        filepath = Rails.root.join(BASE_PATH, file)
+        unless File.exists?(filepath)
+          puts "Unable to find #{filepath}"
           next
         end
 
-        pdf = Yomu.new file_path
+        pdf = Yomu.new filepath
 
-        puts "Created!" if Letter.create!(file_path: file_path, text: pdf.text)
+        puts "Created #{file}!" if Letter.create!(filename: file, text: pdf.text)
       end
     end
   end
