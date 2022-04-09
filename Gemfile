@@ -76,3 +76,5 @@ gem "rqrcode", "~> 2.1"
 gem "byebug", "~> 11.1"
 
 gem "yomu", "~> 0.2.4"
+
+gem "view_component", "~> 2.52"

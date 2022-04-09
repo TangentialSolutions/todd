@@ -1,0 +1,12 @@
+.search-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form_heading {
+    align-self: center;
+}
+
+.search-form_search {
+    width: 100%;
+}
