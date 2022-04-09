@@ -1,5 +1,6 @@
 <% @letters.each do |letter| %>
   <h1><%= letter.filename %></h1>
+  <a href="<%= letter.linkpath %>">View <%= letter.filename %></a>
   <p>
     <%= letter.text %>>
   </p>
