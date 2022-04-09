@@ -1,0 +1,7 @@
+.letter {
+    overflow-y: scroll;
+    /*-ms-overflow-style: ; !* IE and Edge *!*/
+    /*scrollbar-width: none; !* Firefox *!*/
+    border: 1px solid;
+    padding: 0 15px 15px;
+}
