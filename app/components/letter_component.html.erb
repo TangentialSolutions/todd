@@ -1,7 +1,10 @@
 <div class="letter">
-  <h1><%= @letter.filename %></h1>
-  <a href="<%= @letter.linkpath %>">View <%= @letter.filename %></a>
+  <h1><%= letter.filename %></h1>
+  <div class="letter_qr_code">
+    <%= raw qr_code_svg %>
+  </div>
+  <a href="<%= letter_path %>">View <%= letter.filename %></a>
   <div class="letter_content">
-    <%= raw @letter.html %>
+    <%= raw letter.html %>
   </div>
 </div>
