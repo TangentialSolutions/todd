@@ -3,7 +3,7 @@
   <ul class="letters-list_items">
     <% @letters.each do |letter| %>
     <li>
-      <a href="<%= letter.linkpath %>"><%= letter.filename %></a>
+      <a href="<%= asset_path(letter.filename) %>"><%= letter.filename %></a>
     </li>
     <% end %>
   </ul>
