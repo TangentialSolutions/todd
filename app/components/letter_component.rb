@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LetterComponent < ViewComponent::Base
-  attr_reader :letter, :letter_path, :letter_url
+  attr_reader :letter, :letter_path, :letter_url, :qr
 
   def initialize(letter:)
     @letter = letter
@@ -15,8 +15,11 @@ class LetterComponent < ViewComponent::Base
     @letter_url ||= asset_url(letter.filename)
   end
 
+  def qr
+    @qr ||= RQRCode::QRCode.new(letter_url)
+  end
+
   def qr_code_svg
-    qr = RQRCode::QRCode.new(letter_url)
     qr.as_svg(
       color: "fff",
       shape_rendering: "crispEdges",
@@ -24,5 +27,11 @@ class LetterComponent < ViewComponent::Base
       standalone: true,
       use_path: true
     )
+  end
+
+  def qr_code_png
+    png = qr.as_png(size: 250, fill: "white", border_modules: 0, module_px_size: 0)
+
+    png
   end
 end

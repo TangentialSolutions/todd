@@ -3,6 +3,9 @@
   <div class="letter_qr_code">
     <%= raw qr_code_svg %>
   </div>
+  <div class="letter_qr_code_png">
+    <img src="<%= qr_code_png.to_data_url %>">
+  </div>
   <a href="<%= letter_path %>">View <%= letter.filename %></a>
   <div class="letter_content">
     <%= raw letter.html %>
