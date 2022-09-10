@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_125256) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_24_032346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "codes", force: :cascade do |t|
+    t.bigint "person_id"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id", "code"], name: "index_codes_on_person_id_and_code", unique: true
+    t.index ["person_id"], name: "index_codes_on_person_id"
+  end
 
   create_table "letters", force: :cascade do |t|
     t.string "filename", null: false
@@ -22,4 +31,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_125256) do
     t.string "html"
   end
 
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "people_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ip_address"
+    t.index ["first_name", "last_name"], name: "index_people_on_first_name_and_last_name", unique: true
+    t.index ["people_id"], name: "index_people_on_people_id"
+  end
+
+  add_foreign_key "codes", "people"
 end

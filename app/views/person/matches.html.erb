@@ -1,0 +1,14 @@
+<div class="matches">
+  <% if @people.blank? %>
+  <h1> No matches yet!</h1>
+  <% else %>
+  <ul class="matches-list">
+    <% displayed = [] %>
+    <% @people.each do |person| %>
+    <% next if displayed.include?(person.match.id) %>
+    <li><%= person.first_name %> matched to <%= person.match.first_name %></li>
+    <% displayed << person.id %>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

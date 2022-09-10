@@ -1,0 +1,9 @@
+<div class="person">
+  <button id="<%= element_id %>" class="person_button"></button>
+</div>
+
+<script type='application/javascript'>
+  document.getElementById("<%= element_id %>").addEventListener("click", (event) => {
+      window.handleMatch(event.target, event.target.id)
+  })
+</script>

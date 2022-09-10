@@ -1,0 +1,10 @@
+<div class="codes">
+  <ul class="codes-list">
+    <% @codes.each do |code| %>
+      <li class="codes-list_item">
+        <%= "#{code.person.first_name} #{code.person.last_name}" %>
+        <a href="<%= code_url(code.code) %>"><%= code.code %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>
