@@ -1,0 +1,5 @@
+<% if @person.match.present? %>
+<h1 class="already_matched"><%= @person.first_name %>, you've already been matched to <%= @person.match.first_name %> - tell your wife its done.</h1>
+<% else %>
+<%= render PeopleMatcherComponent.new people: Person.where.not(id: @person.id), current_person: @person %>
+<% end %>

@@ -1,0 +1,27 @@
+<script type="application/javascript">
+    window.current_person_id = <%= current_person.id %>
+        window.handleMatch = function () {
+            let csrfToken = document.getElementsByName("csrf-token")[0].content
+            fetch(`/people/match/${window.current_person_id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'X-CSRF-Token': csrfToken
+                }
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    console.log("ERROR: Unable to match person")
+                }
+            }).then((response_json) => {
+                document.getElementsByClassName("people-matcher_submit")[0].remove()
+                document.getElementsByClassName("people-matcher_matched")[0].innerText = `You're matched to ${response_json.matched_person_name}!`
+            })
+        }
+</script>
+<div class="people-matcher">
+  <h1>Hey, <%= current_person.first_name %>!</h1>
+  <button class="people-matcher_submit" onclick="window.handleMatch()">Get my wife off my back!</button>
+  <div class="people-matcher_matched"></div>
+</div>
