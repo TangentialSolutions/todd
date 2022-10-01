@@ -7,7 +7,11 @@ class PersonComponent < ViewComponent::Base
     @person = person
   end
 
-  def element_id
-    person.id
+  def full_name
+    "#{person.first_name} #{person.last_name}"
+  end
+
+  def wishlist_link
+    person.wishlist_linke
   end
 end

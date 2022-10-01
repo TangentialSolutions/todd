@@ -1,4 +1,6 @@
 class PersonController < ApplicationController
+  attr_reader :person
+
   def index
     code = params.require(:code)
     person_code = Code.find_by!(code: code)
@@ -8,29 +10,34 @@ class PersonController < ApplicationController
 
   # @get
   def find
-    person_id = params[:id]
-    person = Person.find(person_id)
+    identify_person!
   end
 
   # @get
   def edit
-
+    identify_person!
   end
 
   # @put
   def update
-
+    identify_person!
   end
 
   def match
-    person_id = params[:id]
-    person = Person.find(person_id)
-    @matched_person = Person.where.not(id: person_id, people_id: nil).shuffle.sample
+    identify_person!
+    @matched_person = Person.where.not(id: person.id, people_id: nil).shuffle.sample
     person.match = @matched_person
     @matched_person.match = person
   end
 
   def matches
     @people = Person.where.not(people_id: nil)
+  end
+
+  private
+
+  def identify_person!
+    person_id = params[:id]
+    @person = Person.find(person_id)
   end
 end

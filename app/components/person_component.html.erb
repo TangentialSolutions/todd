@@ -1,9 +1,4 @@
 <div class="person">
-  <button id="<%= element_id %>" class="person_button"></button>
+  <div class="person_name"><%= "#{full_name}" %></div>
+  <div class="person_wishlist"><a><%= wishlist_link %></a></div>
 </div>
-
-<script type='application/javascript'>
-  document.getElementById("<%= element_id %>").addEventListener("click", (event) => {
-      window.handleMatch(event.target, event.target.id)
-  })
-</script>
