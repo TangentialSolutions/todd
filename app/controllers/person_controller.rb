@@ -6,6 +6,22 @@ class PersonController < ApplicationController
     @person.update!(ip_address: request.remote_ip)
   end
 
+  # @get
+  def find
+    person_id = params[:id]
+    person = Person.find(person_id)
+  end
+
+  # @get
+  def edit
+
+  end
+
+  # @put
+  def update
+
+  end
+
   def match
     person_id = params[:id]
     person = Person.find(person_id)
