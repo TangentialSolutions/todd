@@ -1,6 +1,6 @@
 module Seeds
   module Letters
-    BASE_PATH = "public/letters"
+    BASE_PATH = "app/assets/letters"
     LETTER_FILES = %w[
       ArrowEaster2020.pdf
       Easter2012Liam.pdf

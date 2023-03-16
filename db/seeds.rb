@@ -5,3 +5,4 @@ require_relative "seeds/codes"
 # Seeds::Letters.seed
 Seeds::People.seed
 Seeds::Codes.seed
+Seeds::Letters.seed
