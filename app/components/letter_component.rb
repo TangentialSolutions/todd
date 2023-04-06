@@ -25,4 +25,8 @@ class LetterComponent < ViewComponent::Base
       use_path: true
     )
   end
+
+  def formatted_text
+    letter.formatted_text.gsub("<span>", "<span class='letter_content--search-term'>")
+  end
 end

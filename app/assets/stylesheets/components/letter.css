@@ -1,5 +1,17 @@
+@keyframes search {
+    from {background-color: purple;}
+    to {background-color: teal;}
+}
+
 .letter {
     overflow-y: scroll;
     border: 1px solid;
     padding: 0 15px 15px;
+}
+
+.letter_content--search-term {
+    background-color: teal;
+    animation-name: search;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
