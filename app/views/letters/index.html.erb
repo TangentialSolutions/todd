@@ -1,4 +1,8 @@
 <div class="letter-index">
-  <%= render SearchFormComponent.new %>
-  <%= render LettersListComponent.new(letters: Letter.all) %>
+  <% if hannahs_birthday? %>
+    <%= render BirthdayComponent.new %>
+  <% else %>
+    <%= render SearchFormComponent.new %>
+    <%= render LettersListComponent.new(letters: Letter.all) %>
+  <% end %>
 </div>
