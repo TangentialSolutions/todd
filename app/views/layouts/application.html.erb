@@ -16,11 +16,12 @@
         <% if request.path != root_path %>
         <a href="/">Home</a>
         <% end %>
-        <a style="margin-left: 15px" href="<%= people_matches_path %>">Guys Christmas Matches</a>
       </div>
-      <div class="page-header_title">
-        <h1>T.E.S.L.A</h1>
-      </div>
+      <% unless hannahs_birthday? %>
+        <div class="page-header_title">
+          <h1>T.E.S.L.A</h1>
+        </div>
+      <% end %>
     </header>
     <%= yield %>
   </body>
