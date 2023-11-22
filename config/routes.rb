@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   put "people/match/:id", to: "person#match"
   get "people/matches", to: "person#matches"
   get "codes", to: "codes#index"
+
+  get "demo", to: "demo#index"
+  post "demo/mailchimp_callback", to: "demo#mailchimp_callback"
 end
