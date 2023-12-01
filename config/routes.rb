@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get "codes", to: "codes#index"
 
   get "demo", to: "demo#index"
-  post "demo/mailchimp_callback", to: "demo#mailchimp_callback"
+  post "demo/decode", to: "demo#decode"
+  get "demo/encode", to: "demo#encode"
 end
