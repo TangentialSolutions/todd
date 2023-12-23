@@ -85,6 +85,11 @@ yarn-debug.log*
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# MacOS
+.DS_Store
+.byebug_history
+
+
 # RubyMine
 .idea
 
