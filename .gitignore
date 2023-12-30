@@ -96,3 +96,10 @@ yarn-debug.log*
 # MacOSX
 .DS_STORE
 public/.DS_STORE
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
