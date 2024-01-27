@@ -1,0 +1,86 @@
+<script type="module">
+    import {
+        DID,
+        generateKeyPair,
+    } from 'https://cdn.jsdelivr.net/npm/@decentralized-identity/ion-tools@1.0.7/dist/browser/esm.js';
+    import {
+        RecordsWrite,
+        RecordsRead,
+        RecordsQuery,
+        EventsGet,
+        Cid,
+        Jws,
+    } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/dwn-sdk-js@0.2.16/dist/bundles/dwn.js';
+
+    const keyPair = await generateKeyPair();
+    const keyId = 'key-1'
+    console.log('key pair');
+    console.log(keyPair);
+    const didState = new DID({
+        content: {
+            publicKeys: [
+                {
+                    id: keyId,
+                    type: 'JsonWebKey2020',
+                    publicKeyJwk: keyPair.publicJwk,
+                    purposes: ['authentication'],
+                },
+            ],
+        },
+    });
+    console.log('did state');
+    console.log(didState);
+
+    const did = await didState.getURI('long');
+    console.log('did');
+    console.log(did);
+
+    const authorizationSignatureInput = {
+        privateJwk: keyPair.privateJwk,
+        protectedHeader: { alg: 'ES256K', kid: `${did}#${keyId}` },
+    };
+
+    keyPair.privateJwk.alg = 'ES256K'
+    // WIP: This part isn't working - I'm sending a malformed RecordsWrite request body. I think I have to sort out
+    // the signature parameters and what the actually do.
+    const record = await RecordsWrite.create({
+        schema: 'test',
+        data: new TextEncoder().encode('Hello, World!'),
+        dataFormat: 'application/json',
+        signer: Jws.createSigners([
+            {
+                keyId: keyId,
+                keyPair: keyPair
+            }
+        ]),
+        authorizationSignatureInput: authorizationSignatureInput
+    });
+    console.log('record');
+    console.log(record);
+
+    const jsonRpcPayload = {
+        jsonrpc: '2.0',
+        method: 'dwn.processMessage',
+        params: {
+            target: did,
+            message: record,
+        },
+        id: Date.now(),
+    };
+    console.log('payload')
+    console.log(jsonRpcPayload)
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'dwn-request': JSON.stringify(jsonRpcPayload),
+        },
+    };
+
+    const resp = await fetch('http://localhost:3001', options);
+    const result = await resp.json();
+
+    console.log('result');
+    console.log(result);
+</script>
+<h1>Hello, web5!</h1>

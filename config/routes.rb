@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   put "people/match/:id", to: "person#match"
   get "people/matches", to: "person#matches"
   get "codes", to: "codes#index"
+
+  get "web5", to: "web_five#index"
+  get "web5/app", to: "web_five#app"
 end
