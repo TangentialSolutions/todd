@@ -1,0 +1,28 @@
+<%= javascript_include_tag("application") %>
+<script type="module">
+  console.log('Web5')
+  console.log(Web5)
+  const { web5, did: myDid } = await Web5.Web5.connect({
+      techPreview: {
+          dwnEndpoints: ['http://127.0.0.1:3001']
+      }
+  });
+  console.log(web5);
+  console.log(myDid);
+
+  // this creates a record and stores it in the user's local DWeb Node
+  const { record } = await web5.dwn.records.create({
+      data: "Hello World!",
+      message: {
+          dataFormat: "text/plain",
+      },
+  });
+  console.log('record')
+  console.log(record)
+
+  console.log(await record.data.text()); // logs "Hello World!"
+  const { status } = await record.send(myDid); // send the record to the user's remote DWeb Nodes
+  console.log('status')
+  console.log(status)
+
+</script>
